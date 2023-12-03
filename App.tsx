@@ -1,20 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { AuthProvider } from "./app/providers/AuthProvider";
+import Navigation from "./app/navigation/Navigation";
+import { NativeWindStyleSheet } from "nativewind";
+import { DataProvider } from "./app/providers/DataProvider";
+import StoryContainer from "./app/components/screens/home/stories/StoryContainer";
+// import StoryContainer from "./app/components/screens/home/stories/StoryContainer";
+
+NativeWindStyleSheet.setOutput({
+  default: "native",
+});
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <AuthProvider>
+      <DataProvider>
+        <StoryContainer />
+
+        <Navigation />
+      </DataProvider>
+    </AuthProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
